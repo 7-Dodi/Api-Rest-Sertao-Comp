@@ -1,0 +1,26 @@
+{
+  "name": "api-rest-sertao-comp",
+  "version": "1.0.0",
+  "description": "Development of a Rest API with Prisma ORM and TypeScript for the presentation of the Introduction to API Development Minicourse",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.17",
+    "@types/node": "^22.9.0",
+    "prisma": "^5.22.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
+  }
+}
