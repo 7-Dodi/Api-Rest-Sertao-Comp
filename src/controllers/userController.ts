@@ -1,9 +1,19 @@
 //Importações
 import { Request, Response } from "express";
 import { validate } from "uuid";
+import { ZodError } from "zod";
 
 //Services
-import { findAllUsers, findUserDataByID } from "../services/userService";
+import { createUser, findAllUsers, findUserDataByID } from "../services/userService";
+
+//Types
+import { createUserDTO } from "../types/userTypes";
+
+//Validators
+import { createUserSchema } from "../validators/userValidators";
+
+//Utils
+import { handleZodError } from "../utils/errorHandle";
 
 //Definindo as requisições
 
@@ -42,5 +52,27 @@ export const listUserDataByID = async (req: Request, res: Response): Promise<Res
     } catch (error) {
         console.error("Error in return data of user by ID: ", error);
         return res.status(500).json({error: "Error in return data of user by ID"});
+    };
+};
+
+//Requisição para criar um usuário
+export const postCreateUser = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        //Recebendo dados da requisição
+        const userData: createUserDTO = createUserSchema.parse(req.body);
+
+        //Enviando dado para o services
+        const createdUser = await createUser(userData);
+        if (!createdUser.success) return res.status(400).json({message: createdUser.message});
+
+        //Retornando respostas
+        return res.status(201).json({message: createdUser.message, data: createdUser.data});
+
+    } catch (error) {
+        // Verificar se o erro é de validação do Zod
+        if (error instanceof ZodError) return handleZodError(error, res);
+
+        console.error("Error in create user: ", error);
+        return res.status(500).json({error: "Error in create user"});
     };
 };
