@@ -17,3 +17,12 @@ export const findUserDataByID = async (userId: string) => {
 
     return userData;
 };
+
+//Método para listar um usuáiro por Email
+export const findUserDataByEmil = async (userEmail: string) => {
+    const userData = await prisma.user.findUnique({
+        where: {email: userEmail}
+    });
+
+    return userData;
+};
