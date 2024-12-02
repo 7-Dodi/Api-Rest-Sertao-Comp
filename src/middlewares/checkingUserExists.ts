@@ -8,7 +8,7 @@ import { findUserDataByID } from "../services/userService";
 //Definindo o middleware
 export async function checkingUserExists(req:Request, res: Response, next: NextFunction) {
     //Pegando o id do usuário
-    const userId = req.params.userId;
+    const userId = req.id_User;
     
     try {
         //Verificando se o atributo foi passado
