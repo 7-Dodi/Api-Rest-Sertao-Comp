@@ -39,7 +39,7 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
 
 1. Clone este repositório:  
    ```bash
-   git clone https://github.com/seu-usuario/minicurso-api.git
+   git clone https://github.com/7-Dodi/Api-Rest-Sertao-Comp.git
 
 2. Navegue até o diretório do projeto:  
    ```bash
