@@ -43,7 +43,7 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
 
 2. Navegue até o diretório do projeto:  
    ```bash
-   cd minicurso-api
+   cd Api-Rest-Sert-Comp
 
 3. Instale as dependências:  
    ```bash
