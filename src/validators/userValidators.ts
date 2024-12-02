@@ -23,3 +23,27 @@ export const updateUserDataSchema = z.object({
     email: z.string()
         .email({ message: 'Please enter a valid email address' }),
 });
+
+//Validaçõa para edição da senha de um usuário
+export const updateUserPasswordSchema = z.object({
+    email: z.string()
+        .email({ message: 'Please enter a valid email address' }),
+
+    password: z.string()
+        .min(5, { message: 'Password must be at least 5 characters long' }),
+
+    confirmPassword: z.string()
+        .min(5, { message: 'Password must be at least 6 characters long' })
+    }).refine(data => data.password === data.confirmPassword, {
+        message: "Passwords do not match",
+        path: ["confirmPassword"],
+});
+
+//Validaçõa para edição da senha de um usuário
+export const authenticaterUserSchema = z.object({
+    email: z.string()
+        .email({ message: 'Please enter a valid email address' }),
+
+    password: z.string()
+        .min(5, { message: 'Password must be at least 5 characters long' }),
+});
